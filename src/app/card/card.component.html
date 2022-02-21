@@ -1,0 +1,53 @@
+<!-- Card -->
+
+<div class="card text-center w-25 mt-5 mx-auto">
+    <div class="card-body" *ngFor="let v of emp">
+        <h5 class="card-title"> Name : {{v.name}}</h5>
+        <h5 class="card-title"> Email : {{v.email}}</h5>
+        <h5 class="card-title"> City : {{v.city}}</h5>
+        <h5 class="card-title"> Age : {{v.age}}</h5>
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Edit</button>
+    </div>
+</div>
+
+
+
+
+<!-- Modal -->
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+    aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropLabel">Edit the Details</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form action="" *ngFor="let v of emp" #ref="ngForm" (ngSubmit)="onSubmit(ref)" [formGroup]="userForm">
+                    <div>
+                      <label for="username" class="form-label">USERNAME:</label>
+                      <input type="text" class="form-control" id="username" formControlName="name"
+                       >
+                    </div>
+                    <div>
+                      <label for="email" class="form-label">EMAIL:</label>
+                      <input type="text" class="form-control" id="email" formControlName="email" >
+                    </div>
+                    <div>
+                      <label for="city" class="form-label">CITY:</label>
+                      <input type="text" class="form-control" id="city" formControlName="city" >
+                    </div>
+                    <div>
+                      <label for="age" class="form-label">AGE:</label>
+                      <input type="number" class="form-control" id="age" formControlName="age" >
+                    </div>
+                    <button type="submit" class="btn btn-success"  data-bs-dismiss="modal" >Save</button>
+                  </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <!-- <button type="button" class="btn btn-primary">Save</button> -->
+            </div>
+        </div>
+    </div>
+</div>
